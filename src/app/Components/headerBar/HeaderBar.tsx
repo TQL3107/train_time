@@ -11,8 +11,8 @@ export default function HeaderBar() {
                 <Navbar.Collapse id='header-navbar-nav'>
                     <Nav>
                         <Nav.Link href="/" className="text-white m-1 px-3">Home</Nav.Link>
-                        <Nav.Link href="" className="text-white m-1 px-3">Worktime</Nav.Link>
-                        <Nav.Link href="" className="text-white m-1 px-3">Staff</Nav.Link>
+                        <Nav.Link href="/worktime" className="text-white m-1 px-3">Worktime</Nav.Link>
+                        <Nav.Link href="/staff" className="text-white m-1 px-3">Staff</Nav.Link>
                         <Nav.Link href="/profile" className="text-white m-1 px-3">Profile</Nav.Link>
                         <Nav.Link href="/leaverequest" className="text-white m-1 px-3">Leave request</Nav.Link>
                         <Nav.Link href="" className="text-white m-1 px-3">Logout</Nav.Link>
