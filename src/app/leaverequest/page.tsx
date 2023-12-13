@@ -18,28 +18,28 @@ export default function leaveRequest() {
     return (
         <>
             <Container className="mt-4" fluid>
-                <Container className="col-6 border border-2 border-black" fluid>
+                <Container className="" fluid>
                     <Form>
                         <Container className="d-flex align-items-center justify-content-center">
                             <h3>Leave Request Form</h3>
                         </Container>
                         <Form.Group as={Row} className="mt-3">
-                            <Form.Label column sm="3" className="">
+                            <Form.Label column sm="2" className="">
                                 Name:
                             </Form.Label>
                             <Col>
-                                <Form.Control required size="sm" 
+                                <Form.Control required size="sm" className="border border-dark"
                                     value={name} 
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mt-2">
-                            <Form.Label column sm="3" className="pt-0">
+                            <Form.Label column sm="2" className="pt-0">
                                 Time of request:
                             </Form.Label>
                             <Col>
-                                <input type="number" className="me-2 col-2" id="timeofrequest" 
+                                <input type="number" className="me-2 col-2" id="timeofrequest"
                                     onChange={(e : any) => setNumberOfTimeRequest(e.target.value)}/>
                                 <Form.Check inline name="timeRequest" type="radio" label="Days" 
                                     value={"Day"}
@@ -52,20 +52,20 @@ export default function leaveRequest() {
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mt-2">
-                            <Form.Label column sm="3" className="">
+                            <Form.Label column sm="2" className="">
                                 Date of absence:
                             </Form.Label>
                             <Col sm="4">
                                 <Form.Group as={Row}>
-                                    <Form.Label column sm="5">From: </Form.Label>
-                                    <Form.Control type="date" size="sm" className="w-50" 
+                                    <Form.Label column sm="4">From: </Form.Label>
+                                    <Form.Control type="date" size="sm" className="w-50 border border-dark" 
                                         onChange={(e : any) => setStartDate(e.target.value)} />
                                 </Form.Group>
                             </Col>
                             <Col sm="4">
                                 <Form.Group as={Row} className="">
-                                    <Form.Label column sm="5">To: </Form.Label>
-                                    <Form.Control type="date" size="sm" className="w-50" 
+                                    <Form.Label column sm="4">To: </Form.Label>
+                                    <Form.Control type="date" size="sm" className="w-50 border border-dark" 
                                         onChange={(e : any) => setEndDate(e.target.value)} />
                                 </Form.Group>
                             </Col>
@@ -105,7 +105,7 @@ export default function leaveRequest() {
                         </Form.Group>
                         <Form.Group className="mt-3">
                             <Form.Label>Reason: </Form.Label>
-                            <Form.Control as="textarea" rows={3}
+                            <Form.Control as="textarea" rows={3} className="border border-dark"
                                 required = {typeOfRequest === "Other" ? true : false}
                                 value={reason}
                                 onChange={(e) => setReason(e.target.value)}

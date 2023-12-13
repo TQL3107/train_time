@@ -1,7 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import HeaderBar from './Components/headerBar/HeaderBar';
+import MenuBar from './Components/menu/Menu';
+import FooterBar from './Components/footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,8 +23,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div>
-          <HeaderBar></HeaderBar>
-          {children}
+          <div>
+            <HeaderBar></HeaderBar>
+          </div>
+          <div className='container-fluid d-flex'>
+            <div className='col-sm-2'>
+              <MenuBar></MenuBar>
+            </div>
+            <div className='col'>
+              {children}
+            </div>
+          </div>
+          <FooterBar></FooterBar>
         </div>
       </body>
     </html>

@@ -1,0 +1,12 @@
+.bg-gray {
+    background-color: gray;
+}
+
+.text-reset {
+    color: inherit;
+    text-decoration: none;
+}
+
+.pad-1 {
+    padding: 0px 30px 30px;
+}

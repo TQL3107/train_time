@@ -1,7 +1,6 @@
 'use client'
 
 import { Container, Image, Col, Row, Button } from "react-bootstrap"
-import Link from "next/link"
 
 export default function profile() {
 
@@ -12,7 +11,7 @@ export default function profile() {
                     <Image src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" className="w-50" roundedCircle/>
                     <Button className="btn" href="/editprofile">Edit</Button>
                 </Container>
-                <Container as={Row}>
+                <Container as={Row} className="mt-3">
                     <Col >
                         <Row>
                             <p className="col-sm-4">Name: </p>

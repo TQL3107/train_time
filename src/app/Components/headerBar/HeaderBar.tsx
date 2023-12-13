@@ -1,24 +1,26 @@
-'use client';
+'use client'
 
-import Link from "next/link";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import '../headerBar/HeaderBar.css';
 
 export default function HeaderBar() {
     return (
-        <Navbar className="bg-dark" expand='lg'>
-            <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id='header-navbar-nav'>
-                    <Nav>
-                        <Nav.Link href="/" className="text-white m-1 px-3">Home</Nav.Link>
-                        <Nav.Link href="/worktime" className="text-white m-1 px-3">Worktime</Nav.Link>
-                        <Nav.Link href="/staff" className="text-white m-1 px-3">Staff</Nav.Link>
-                        <Nav.Link href="/profile" className="text-white m-1 px-3">Profile</Nav.Link>
-                        <Nav.Link href="/leaverequest" className="text-white m-1 px-3">Leave request</Nav.Link>
-                        <Nav.Link href="" className="text-white m-1 px-3">Logout</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <Container fluid className="m-0 p-0">
+            <Navbar className="bg-dark" expand='lg'>
+                <Container>
+                    <Navbar.Collapse id='header-navbar-nav'>
+                        <Nav>
+                            <Button className="btn btn-dark">
+                                <i className="bi bi-list"></i>
+                            </Button>
+                            <Nav.Link href="/" className="text-white m-1 px-3">
+                                <img width="50px" height="50px" src="https://zotek8.com/wp-content/uploads/2023/07/Zotek8_logo_no-slogan_1-1024x1024.png" />
+                                Home
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </Container>
     )
 }
