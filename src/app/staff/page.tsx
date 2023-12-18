@@ -10,12 +10,14 @@ export default function staff() {
     const [code, setCode] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
+    const [dateStartWork, setDateStartWork] = useState(new Date());
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
     const addStaff = () => {
-
+        console.log(name, sex, code, phone, address, dateStartWork);
+        handleClose();
     }
     return (
         <>
@@ -30,8 +32,8 @@ export default function staff() {
                                 Name:
                             </Form.Label>
                             <Col>
-                                <Form.Control required size="sm" 
-                                    value={name} 
+                                <Form.Control required size="sm"
+                                    // value={name} 
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </Col>
@@ -53,7 +55,7 @@ export default function staff() {
                             </Form.Label>
                             <Col>
                                 <Form.Control required size="sm" 
-                                    value={code} 
+                                    // value={code}
                                     onChange={(e) => setCode(e.target.value)}
                                 />
                             </Col>
@@ -63,8 +65,8 @@ export default function staff() {
                                 Phone:
                             </Form.Label>
                             <Col>
-                                <Form.Control required size="sm" 
-                                    value={phone} 
+                                <Form.Control required size="sm"  
+                                    // value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                 />
                             </Col>
@@ -75,8 +77,18 @@ export default function staff() {
                             </Form.Label>
                             <Col>
                                 <Form.Control required size="sm" 
-                                    value={address} 
+                                    // value={address}
                                     onChange={(e) => setAddress(e.target.value)}
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} className="mt-3">
+                            <Form.Label column sm="4">
+                                Date start work:
+                            </Form.Label>
+                            <Col>
+                                <Form.Control required size="sm" type="date"
+                                    onChange={(e : any) => setDateStartWork(e.target.value)}
                                 />
                             </Col>
                         </Form.Group>

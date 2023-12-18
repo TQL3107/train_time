@@ -2,8 +2,7 @@
 
 import React from "react";
 import '../footer/Footer.css';
-import { Container, Col, Row } from "react-bootstrap";
-import Image from "react-bootstrap";
+import { Container, Col, Row, Image } from "react-bootstrap";
 
 export default function FooterBar() {
     return(
@@ -12,7 +11,7 @@ export default function FooterBar() {
                 <Container fluid className="bg-gray mt-3 m-0 pad-1" as={Row}>
                     <Col className="mt-3 pad-1 text-center" md='4' sm='6' lg='4'>
                         <h4 className="">
-                            <img width="150px" height="150px" src="https://zotek8.com/wp-content/uploads/2023/07/Zotek8_logo_no-slogan_1-1024x1024.png" />
+                            <Image width="150px" height="150px" src="https://zotek8.com/wp-content/uploads/2023/07/Zotek8_logo_no-slogan_1-1024x1024.png" />
                         </h4>
                     </Col>
                     <Col className="mt-5 m-0 pad-1" md='3' sm='6' lg='3'>
