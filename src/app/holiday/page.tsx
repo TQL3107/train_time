@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function holidayCalendar() {
     const currentDate = new Date();
-    const [month, setMonth] = useState(0);
+    const [month, setMonth] = useState(currentDate.getMonth());
     const [year, setYear] = useState(currentDate.getFullYear());
 
     useEffect (() => {

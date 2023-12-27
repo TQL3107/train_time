@@ -6,7 +6,7 @@ import { useState } from 'react'
 export default function editProfile() {
     const [show, setShow] = useState(false);
     const [name, setName] = useState('');
-    const [birthday, setBirthday] = useState(new Date('2020-01-02'));
+    const [birthday, setBirthday] = useState(new Date());
     const [employeeCode, setEmployeeCode] = useState('');
     const [code, setCode] = useState('');
     const [sex, setSex] = useState(0);

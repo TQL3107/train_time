@@ -26,7 +26,7 @@ const FileUploadButton = () => {
                 style={{ display: 'none' }}
                 onChange={handleFileChange}
             />
-            <Button className="mt-2" onClick={handleClick}>Import file</Button>
+            <Button className="mt-2" onClick={handleClick}>Import</Button>
         </Container>
     )
 }

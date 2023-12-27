@@ -7,6 +7,9 @@ import './globals.css';
 import HeaderBar from './Components/headerBar/HeaderBar';
 import MenuBar from './Components/menu/Menu';
 import FooterBar from './Components/footer/Footer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,11 +30,11 @@ export default function RootLayout({
           <div>
             <HeaderBar></HeaderBar>
           </div>
-          <div className='container-fluid d-flex'>
+          <div className='fluid d-flex'>
             <div className='col-sm-2'>
               <MenuBar></MenuBar>
             </div>
-            <div className='col'>
+            <div className='col fluid'>
               {children}
             </div>
           </div>

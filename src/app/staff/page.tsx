@@ -6,6 +6,8 @@ import { useState } from "react"
 export default function staff() {
     const [show, setShow] = useState(false);
     const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [sex, setSex] = useState(0);
     const [code, setCode] = useState('');
     const [phone, setPhone] = useState('');
@@ -35,6 +37,28 @@ export default function staff() {
                                 <Form.Control required size="sm"
                                     // value={name} 
                                     onChange={(e) => setName(e.target.value)}
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} className="mt-3">
+                            <Form.Label column sm="2">
+                                Email:
+                            </Form.Label>
+                            <Col>
+                                <Form.Control required size="sm"
+                                    // value={name} 
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} className="mt-3">
+                            <Form.Label column sm="2">
+                                Password:
+                            </Form.Label>
+                            <Col>
+                                <Form.Control required size="sm"
+                                    // value={name} 
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </Col>
                         </Form.Group>
