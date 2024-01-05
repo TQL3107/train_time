@@ -38,9 +38,10 @@ export default function login() {
                 password: password,
             }
         }).then((response) => {
-            if (response.status === 200 && response.data.email === email) {
-                console.log(response);
-            }
+            // if (response.status === 200 && response.data.email === email) {
+            //     console.log(response);
+            // }
+            console.log(response.data.user.email);
         })
     }
 

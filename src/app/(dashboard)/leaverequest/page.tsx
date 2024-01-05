@@ -40,6 +40,7 @@ export default function leaveRequest() {
                             </Form.Label>
                             <Col>
                                 <input type="number" className="me-2 col-2" id="timeofrequest"
+                                    required = {timeOfRequest === 'Hour' ? true : false}
                                     onChange={(e : any) => setNumberOfTimeRequest(e.target.value)}/>
                                 <Form.Check inline name="timeRequest" type="radio" label="Days" 
                                     value={"Day"}

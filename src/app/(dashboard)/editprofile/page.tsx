@@ -7,9 +7,9 @@ export default function editProfile() {
     const [show, setShow] = useState(false);
     const [name, setName] = useState('');
     const [birthday, setBirthday] = useState(new Date());
-    const [employeeCode, setEmployeeCode] = useState('');
-    const [code, setCode] = useState('');
-    const [sex, setSex] = useState(0);
+    const [employeeId, setEmployeeId] = useState('');
+    const [citizenID, setCitizenID] = useState('');
+    const [gender, setGender] = useState(0);
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
 
@@ -55,13 +55,13 @@ export default function editProfile() {
                         <Row>
                             <p className="col-sm-4">Employee code: </p>
                             <Form.Control className="col border border-dark" type="text" 
-                                value={employeeCode} onChange={(e) => setEmployeeCode(e.target.value)}
+                                value={employeeId} onChange={(e) => setEmployeeId(e.target.value)}
                             />
                         </Row><br/>
                         <Row>
                             <p className="col-sm-4">CCCD: </p>
                             <Form.Control className="col border border-dark" type="text" 
-                                value={code} onChange={(e) => setCode(e.target.value)}
+                                value={citizenID} onChange={(e) => setCitizenID(e.target.value)}
                             />
                         </Row><br/>
                     </Col>
@@ -71,10 +71,10 @@ export default function editProfile() {
                         <Row>
                             <p className="col-sm-4">Sex: </p>
                             <Form.Check type="radio" className="col-3" label="Male" name="sex" inline 
-                                value={0} onClick={(e : any) => setSex(parseInt(e.target.value))}
+                                value={0} onClick={(e : any) => setGender(parseInt(e.target.value))}
                             />
                             <Form.Check type="radio" className="col-3" label="Female" name="sex" inline
-                                value={1} onClick={(e : any) => setSex(parseInt(e.target.value))}
+                                value={1} onClick={(e : any) => setGender(parseInt(e.target.value))}
                             />
                         </Row><br/>
                         <Row>

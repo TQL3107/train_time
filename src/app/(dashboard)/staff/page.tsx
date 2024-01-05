@@ -7,18 +7,15 @@ export default function staff() {
     const [show, setShow] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [sex, setSex] = useState(0);
     const [code, setCode] = useState('');
-    const [phone, setPhone] = useState('');
-    const [address, setAddress] = useState('');
     const [dateStartWork, setDateStartWork] = useState(new Date());
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
     const addStaff = () => {
-        console.log(name, sex, code, phone, address, dateStartWork);
+        console.log(name, sex, code, dateStartWork);
         handleClose();
     }
     return (
@@ -35,7 +32,6 @@ export default function staff() {
                             </Form.Label>
                             <Col>
                                 <Form.Control required size="sm"
-                                    // value={name} 
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </Col>
@@ -46,19 +42,7 @@ export default function staff() {
                             </Form.Label>
                             <Col>
                                 <Form.Control required size="sm"
-                                    // value={name} 
                                     onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} className="mt-3">
-                            <Form.Label column sm="2">
-                                Password:
-                            </Form.Label>
-                            <Col>
-                                <Form.Control required size="sm"
-                                    // value={name} 
-                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </Col>
                         </Form.Group>
@@ -79,30 +63,7 @@ export default function staff() {
                             </Form.Label>
                             <Col>
                                 <Form.Control required size="sm" 
-                                    // value={code}
                                     onChange={(e) => setCode(e.target.value)}
-                                />
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} className="mt-3">
-                            <Form.Label column sm="2">
-                                Phone:
-                            </Form.Label>
-                            <Col>
-                                <Form.Control required size="sm"  
-                                    // value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                />
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} className="mt-3">
-                            <Form.Label column sm="2">
-                                Address:
-                            </Form.Label>
-                            <Col>
-                                <Form.Control required size="sm" 
-                                    // value={address}
-                                    onChange={(e) => setAddress(e.target.value)}
                                 />
                             </Col>
                         </Form.Group>
