@@ -1,49 +1,112 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import React from "react";
+import './page.css';
 import { Container, Button, Form, Image } from 'react-bootstrap';
 import axios from 'axios';
-import { Route } from 'next';
 import { useRouter } from 'next/navigation';
 
-export default function login() {
+const login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [validated, setValidated] = useState(false);
+    const [errors, setErrors] = useState({}); 
+    const [isFormValid, setIsFormValid] = useState(false);
     const [already, setAlready] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     const router = useRouter();
 
-    const onSubmit = async (e : any) => {
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
+    useEffect(() => {
+        validateForm();
+    }, [email, password]);
+
+    // Validate form
+    const validateForm = () => {
+        let errors = {};
+
+        if (!email) {
+            errors.email = 'Email is required';
+        } else if (!/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm.test(email) && email) {
+            errors.email = 'Email is invalid';
+        }
+
+        if(!password) {
+            errors.password = 'Password is required';
+        } else if (password.length < 8) {
+            errors.password = 'Password is invalid';
+        }
+
+        setErrors(errors);
+        setIsFormValid(Object.keys(errors).length === 0);
+    }
+
+    // Submit form
+    const handleSubmit = (e : any) => {
+        if (isFormValid) {
+            setAlready(false);
+            axios.request({
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                url: `http://localhost:8080/api/user/login`,
+                timeout: 5000,
+                responseType: 'json',
+                data: {
+                    email: email,
+                    password: password,
+                }
+            }).then((response) => {
+                if (response.status === 200 && response.data.user.email === email) {
+                    setIsError(false);
+                    localStorage.setItem('userId', response.data.user.id);
+                    localStorage.setItem('userName', response.data.user.name);
+                    localStorage.setItem('userRoleId', response.data.user.role_id);
+                    localStorage.setItem('userDepartmentId', response.data.user.department_id);
+                    localStorage.setItem('employeeId', response.data.user.employee_id);
+                    localStorage.setItem('userEmail', response.data.user.email);
+                    localStorage.setItem('userPhone', response.data.user.phone);
+                    localStorage.setItem('userGender', response.data.user.gender);
+                    localStorage.setItem('userCitizenId', response.data.user.citizen_id);
+                    localStorage.setItem('userBirthday', response.data.user.birthday);
+                    localStorage.setItem('userAvatar', response.data.user.avatar);
+                    localStorage.setItem('userAddress', response.data.user.address);
+                    localStorage.setItem('userDateStartWork', response.data.user.date_start_work);
+                    console.log(response);
+                    return router.push('/');
+                }
+            }).catch((error) => {
+                console.log(error);
+                setIsError(true);
+            });
+        } else {
             e.preventDefault();
             e.stopPropagation();
         }
-
-        setValidated(true);
+        setIsSubmit(true);
+        console.log(isFormValid);
+        console.log(errors);
         console.log(email, password);
     }
 
-    const handleLogin = async (e : any) => {
-        setAlready(false);
-        axios.request({
-            method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            url: `http://localhost:8080/api/user/login`,
-            timeout: 5000,
-            responseType: 'json',
-            data: {
-                email: email,
-                password: password,
-            }
-        }).then((response) => {
-            // if (response.status === 200 && response.data.email === email) {
-            //     console.log(response);
-            // }
-            console.log(response.data.user.email);
-        })
-    }
+    // const handleLogin = async (e : any) => {
+    //     setAlready(false);
+    //     axios.request({
+    //         method: 'POST',
+    //         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    //         url: `http://localhost:8080/api/user/login`,
+    //         timeout: 5000,
+    //         responseType: 'json',
+    //         data: {
+    //             email: email,
+    //             password: password,
+    //         }
+    //     }).then((response) => {
+    //         if (response.status === 200 && response.data.user.email === email) {
+    //             console.log(response);
+    //         }
+    //     })
+    // }
 
     useEffect(() => {
         if (!already) {
@@ -61,31 +124,28 @@ export default function login() {
             
                 <Container className='d-flex align-items-center col vh-100' fluid>
                     <Container className='bg-white border border-black' fluid>
-                        <Form noValidate validated={validated} onSubmit={onSubmit}>
+                        <Form onSubmit={(e) => handleSubmit(e)}>
                             <Form.Group className='mt-3 justify-content-center d-flex'>
                                 <Image width='100px' height='100px' src='https://zotek8.com/wp-content/uploads/2023/07/Zotek8_logo_no-slogan_1-1024x1024.png'/>
                             </Form.Group>
 
-                            <Form.Group className='mt-3' controlId='formGroupEmail'>
+                            <Form.Group className='mt-3'>
                                 <Form.Label>Email:</Form.Label>
-                                <Form.Control required type='email' placeholder='Enter your email' 
+                                <Form.Control required placeholder='Enter your email' 
                                     value={email} 
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
-                                <Form.Control.Feedback type='invalid'>
-                                    Invalid email.
-                                </Form.Control.Feedback>
+                                {errors.email && isSubmit && <p className='error-message'>{errors.email}</p>}
                             </Form.Group>
 
-                            <Form.Group className='mt-3' controlId='formGroupPassword'>
+                            <Form.Group className='mt-3'>
                                 <Form.Label>Password:</Form.Label>
                                 <Form.Control required type='password' placeholder='Enter password' 
                                     value={password} 
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
-                                <Form.Control.Feedback type='invalid'>
-                                    Invalid password.
-                                </Form.Control.Feedback>
+                                {errors.password && isSubmit && <p className='error-message'>{errors.password}</p>}
+                                {isError && <p className='error-message'>Your email or password was incorrect</p>}
                             </Form.Group>
 
                             <Form.Group>
@@ -98,7 +158,7 @@ export default function login() {
                             </Form.Group>
 
                             <div className='m-3 d-flex justify-content-center'>
-                                <Button type='button' onClick={(event) => handleLogin(event)}>Login</Button>
+                                <Button type='submit' onClick={(e) => handleSubmit(e)}>Login</Button>
                             </div>
                         </Form>
                     </Container>
@@ -108,3 +168,5 @@ export default function login() {
         </>
     )
 }
+
+export default login;
