@@ -5,3 +5,17 @@
 #header-navbar-nav {
     
 }
+
+.search-span {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 0;
+}
+
+.search-control {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 0;
+    padding-bottom: 7px;
+    margin-left: -1px;
+}

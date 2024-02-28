@@ -11,6 +11,10 @@ export default function HeaderBar() {
     const handleOptions = () => {
         setShowOption(!showOption);
     }
+
+    const handleLogout = () => {
+        localStorage.clear();
+    }
     return (
         <>
             <Container fluid className="m-0 p-0">
@@ -50,7 +54,7 @@ export default function HeaderBar() {
                             }) => (
                                 <div {...props}>
                                     <ListGroup>
-                                        <ListGroup.Item href="/" action>
+                                        <ListGroup.Item href="/" action onClick={handleLogout}>
                                             Log out
                                         </ListGroup.Item>
                                     </ListGroup>

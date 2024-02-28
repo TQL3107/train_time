@@ -5,7 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './globals.css';
 import HeaderBar from './Components/headerBar/HeaderBar';
-import MenuBar from './Components/menu/Menu';
+import SideBar from './Components/SideBar/SideBar';
 import FooterBar from './Components/footer/Footer';
 import dotenv from 'dotenv';
 
@@ -26,15 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div>
+      <div>
           <div>
             <HeaderBar></HeaderBar>
           </div>
           <div className='fluid d-flex'>
             <div className='col-sm-2'>
-              <MenuBar></MenuBar>
+              <SideBar></SideBar>
             </div>
-            <div className='col fluid'>
+            <div className='col ms-4 fluid'>
               {children}
             </div>
           </div>

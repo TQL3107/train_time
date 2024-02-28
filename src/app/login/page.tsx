@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 import React from "react";
 import './page.css';
 import { Container, Button, Form, Image } from 'react-bootstrap';
+import Loading from '../(dashboard)/Components/loading/Loading';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 const login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({}); 
+    const [errors, setErrors] = useState({email: '', password: ''}); 
     const [isFormValid, setIsFormValid] = useState(false);
     const [already, setAlready] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
@@ -24,7 +25,10 @@ const login = () => {
 
     // Validate form
     const validateForm = () => {
-        let errors = {};
+        let errors = {
+            email: '',
+            password: ''
+        };
 
         if (!email) {
             errors.email = 'Email is required';
@@ -39,7 +43,7 @@ const login = () => {
         }
 
         setErrors(errors);
-        setIsFormValid(Object.keys(errors).length === 0);
+        setIsFormValid(errors.email === '' && errors.password === '');
     }
 
     // Submit form
@@ -65,21 +69,15 @@ const login = () => {
                     localStorage.setItem('userDepartmentId', response.data.user.department_id);
                     localStorage.setItem('employeeId', response.data.user.employee_id);
                     localStorage.setItem('userEmail', response.data.user.email);
-                    localStorage.setItem('userPhone', response.data.user.phone);
-                    localStorage.setItem('userGender', response.data.user.gender);
-                    localStorage.setItem('userCitizenId', response.data.user.citizen_id);
-                    localStorage.setItem('userBirthday', response.data.user.birthday);
                     localStorage.setItem('userAvatar', response.data.user.avatar);
-                    localStorage.setItem('userAddress', response.data.user.address);
-                    localStorage.setItem('userDateStartWork', response.data.user.date_start_work);
                     console.log(response);
                     return router.push('/');
                 }
             }).catch((error) => {
                 console.log(error);
-                setIsError(true);
             });
         } else {
+            setIsError(true);
             e.preventDefault();
             e.stopPropagation();
         }
@@ -89,25 +87,6 @@ const login = () => {
         console.log(email, password);
     }
 
-    // const handleLogin = async (e : any) => {
-    //     setAlready(false);
-    //     axios.request({
-    //         method: 'POST',
-    //         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    //         url: `http://localhost:8080/api/user/login`,
-    //         timeout: 5000,
-    //         responseType: 'json',
-    //         data: {
-    //             email: email,
-    //             password: password,
-    //         }
-    //     }).then((response) => {
-    //         if (response.status === 200 && response.data.user.email === email) {
-    //             console.log(response);
-    //         }
-    //     })
-    // }
-
     useEffect(() => {
         if (!already) {
             setAlready(true);
@@ -116,7 +95,7 @@ const login = () => {
 
     return (
         <>
-        { already == false ? '' : 
+        { already == false ? <Loading></Loading> : 
             <Container className='d-flex justify-content-center bg-info' fluid>
                 <Container fluid className='col-8'>
                     <Image src='https://zotek8.com/wp-content/uploads/2023/06/smartTab-1024x805.png' className='bg-info img-fluid'/>

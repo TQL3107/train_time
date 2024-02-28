@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, ListGroup } from "react-bootstrap"
-import '../menu/Menu.css';
+import './SideBar.css';
 
 export default function MenuBar() {
     const active = true;

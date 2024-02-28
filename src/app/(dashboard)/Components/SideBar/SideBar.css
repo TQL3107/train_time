@@ -1,0 +1,22 @@
+.btn-no-border {
+    border: none;
+}
+
+.btn-sidebar {
+    position: relative;
+    background-color: #0d6efd;
+    align-self: end;
+}
+
+.sidebar-navbar {
+    height: 53px;
+}
+
+.nav-list-item {
+    height: auto;
+}
+
+.nav-title {
+    font-size: 12px;
+    font-weight: bold;
+}
